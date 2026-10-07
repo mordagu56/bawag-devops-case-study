@@ -1,0 +1,20 @@
+# Deneme alanı
+learn/
+
+# Java / Maven
+target/
+*.class
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# macOS
+.DS_Store
+
+# Secret'lar asla repo'ya girmez
+*.env
+*.pem
+*.key
+kubeconfig*
