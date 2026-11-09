@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Click Counter</title>
+</head>
+<body style="font-family: sans-serif; text-align: center; margin-top: 4rem;">
+<h1>Click Counter</h1>
+<button id="btn" style="font-size: 1.5rem; padding: 1rem 2rem;">Click me</button>
+<p>Clicks: <strong id="count">0</strong></p>
+<p><small>Served by pod: <span id="pod">-</span></small></p>
+<script>
+    async function update(response) {
+        const data = await response.json();
+        document.getElementById('count').textContent = data.clicks;
+        document.getElementById('pod').textContent = data.pod;
+    }
+    document.getElementById('btn').onclick =
+        () => fetch('/api/click', { method: 'POST' }).then(update);
+    fetch('/api/clicks').then(update);
+</script>
+</body>
+</html>
